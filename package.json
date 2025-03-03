@@ -1,0 +1,13 @@
+{
+  "name": "automated-web-testing",
+  "version": "1.0.0",
+  "description": "working through automated web testing tutorials",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.50.1"
+  }
+}
