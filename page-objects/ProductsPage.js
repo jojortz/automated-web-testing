@@ -1,4 +1,5 @@
 import { expect } from "@playwright/test";
+import { Navigation } from "./Navigation";
 
 export class ProductsPage {
 
@@ -6,27 +7,21 @@ export class ProductsPage {
         this.page = page
 
         this.addButtons = this.page.locator('[data-qa="product-button"]')
-        this.basketCounter = this.page.locator('[data-qa="header-basket-count"]')
     }
 
     visit = async () => {
         await this.page.goto("/")
     }
 
-    getBasketCount = async () => {
-        this.basketCounter.waitFor();
-        const text = await this.basketCounter.innerText();
-        return parseInt(text, 10);
-    }
-
     addProductToBasket = async (index) => {
         const thisAddCuttom = this.addButtons.nth(index)
         thisAddCuttom.waitFor();
         await expect(thisAddCuttom).toHaveText("Add to Basket");
-        const basketCountBefore = await this.getBasketCount();
+        const navigation = new Navigation(this.page);
+        const basketCountBefore = await navigation.getBasketCount();
         thisAddCuttom.click();
         await expect(thisAddCuttom).toHaveText("Remove from Basket");
-        const basketCountAfter = await this.getBasketCount();
+        const basketCountAfter = await navigation.getBasketCount();
         expect(basketCountAfter).toBe(basketCountBefore + 1);
     }
 }
