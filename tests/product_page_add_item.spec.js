@@ -17,6 +17,5 @@ test("Product Page Add To Basket", async ({ page }) => {
     const checkoutLink = page.getByRole('link', { name: 'Checkout' });
     checkoutLink.waitFor();
     await checkoutLink.click();
-
     await page.waitForURL("/basket");
 })
