@@ -7,6 +7,8 @@ export class ProductsPage {
         this.page = page
 
         this.addButtons = this.page.locator('[data-qa="product-button"]')
+        this.sortDropdown = this.page.locator('[data-qa="sort-dropdown"]')
+        this.productTitles = this.page.locator('[data-qa="product-title"]')
     }
 
     visit = async () => {
@@ -23,5 +25,14 @@ export class ProductsPage {
         await expect(thisAddCuttom).toHaveText("Remove from Basket");
         const basketCountAfter = await navigation.getBasketCount();
         expect(basketCountAfter).toBe(basketCountBefore + 1);
+    }
+
+    sortByCheapest = async () => {
+        await this.sortDropdown.waitFor();
+        await this.productTitles.first().waitFor();
+        const unsortedTitles = await this.productTitles.allInnerTexts();
+        await this.sortDropdown.selectOption("price-asc");
+        const sortedTitles = await this.productTitles.allInnerTexts();
+        expect(sortedTitles).not.toEqual(unsortedTitles);
     }
 }
