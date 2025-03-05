@@ -6,9 +6,9 @@ export class ProductsPage {
     constructor(page) {
         this.page = page
 
-        this.addButtons = this.page.locator('[data-qa="product-button"]')
-        this.sortDropdown = this.page.locator('[data-qa="sort-dropdown"]')
-        this.productTitles = this.page.locator('[data-qa="product-title"]')
+        this.addButtons = page.locator('[data-qa="product-button"]')
+        this.sortDropdown = page.locator('[data-qa="sort-dropdown"]')
+        this.productTitles = page.locator('[data-qa="product-title"]')
     }
 
     visit = async () => {

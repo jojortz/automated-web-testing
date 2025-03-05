@@ -4,10 +4,10 @@ export class Checkout {
     constructor(page) {
         this.page = page
 
-        this.basketCards = this.page.locator('[data-qa="basket-card"]');
-        this.basketItemPrice = this.page.locator('[data-qa="basket-item-price"]');
-        this.basketItemRemoveButton = this.page.locator('[data-qa="basket-card-remove-item"]');
-        this.continueToCheckoutButton = this.page.locator('[data-qa="continue-to-checkout"]');
+        this.basketCards = page.locator('[data-qa="basket-card"]');
+        this.basketItemPrice = page.locator('[data-qa="basket-item-price"]');
+        this.basketItemRemoveButton = page.locator('[data-qa="basket-card-remove-item"]');
+        this.continueToCheckoutButton = page.locator('[data-qa="continue-to-checkout"]');
     }
 
     removeCheapestProduct = async () => {
