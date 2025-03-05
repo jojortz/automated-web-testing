@@ -7,6 +7,7 @@ import { Login } from "../page-objects/Login";
 import { RegisterPage } from "../page-objects/RegisterPage";
 import { DeliveryPage } from "../page-objects/DeliveryPage";
 import { deliveryDetails } from "../data/deliveryDetails";
+import { PaymentPage } from "../page-objects/PaymentPage";
 
 test.only("New User Full End-to-End test Journey", async ({page}) => {
     const productsPage = new ProductsPage(page);
@@ -37,4 +38,7 @@ test.only("New User Full End-to-End test Journey", async ({page}) => {
     await deliveryPage.fillDeliveryDetails(deliveryDetails);
     await deliveryPage.saveDetails();
     await deliveryPage.goToPayment();
+
+    const paymentPage = new PaymentPage(page);
+    await paymentPage.activateDiscount();
 });
