@@ -7,11 +7,7 @@ export class RegisterPage {
         this.registerButton = page.getByRole('button', { name: 'Register' });
     }
 
-    registerNewUser = async ()  => {
-
-        const email = `test-${Math.floor(Math.random() * 100000)}@test.com`;
-        const password = "password123";
-
+    registerNewUser = async (email, password)  => {
         await this.emailInput.waitFor();
         await this.emailInput.fill(email);
 

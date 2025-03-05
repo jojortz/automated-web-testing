@@ -1,4 +1,5 @@
 import { test } from "@playwright/test";
+import { v4 as uuidv4 } from 'uuid';
 import { ProductsPage } from "../page-objects/ProductsPage";
 import { Navigation } from "../page-objects/Navigation";
 import { Checkout } from "../page-objects/Checkout";
@@ -24,6 +25,10 @@ test.only("New User Full End-to-End test Journey", async ({page}) => {
     await login.goToRegister();
 
     const registerPage = new RegisterPage(page);
-    await registerPage.registerNewUser();
+
+    const email = `${uuidv4()}@example.com`;
+    const password = uuidv4();
+
+    await registerPage.registerNewUser(email, password);
 
 });
