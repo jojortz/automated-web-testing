@@ -5,6 +5,7 @@ import { Navigation } from "../page-objects/Navigation";
 import { Checkout } from "../page-objects/Checkout";
 import { Login } from "../page-objects/Login";
 import { RegisterPage } from "../page-objects/RegisterPage";
+import { DeliveryPage } from "../page-objects/DeliveryPage";
 
 test.only("New User Full End-to-End test Journey", async ({page}) => {
     const productsPage = new ProductsPage(page);
@@ -31,4 +32,6 @@ test.only("New User Full End-to-End test Journey", async ({page}) => {
 
     await registerPage.registerNewUser(email, password);
 
+    const deliveryPage = new DeliveryPage(page);
+    await deliveryPage.fillDeliveryDetails();
 });

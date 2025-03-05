@@ -17,7 +17,6 @@ export class RegisterPage {
         await this.registerButton.waitFor();
         await this.registerButton.click();
         await this.page.waitForURL("/delivery-details");
-        await this.page.pause();
     }
         
 }
