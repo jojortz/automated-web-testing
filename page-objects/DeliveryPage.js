@@ -38,7 +38,7 @@ export class DeliveryPage {
         await this.addressCityInput.fill(deliveryDetails.addressCity);
 
         await this.countryDropdown.waitFor();
-        this.countryDropdown.selectOption(deliveryDetails.country);
+        await this.countryDropdown.selectOption(deliveryDetails.country);
     }
 
     saveDetails = async () => {
