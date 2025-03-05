@@ -10,24 +10,24 @@ export class DeliveryPage {
         this.countryDropdown = page.locator('[data-qa="country-dropdown"]');
     }
 
-    fillDeliveryDetails = async () => {
+    fillDeliveryDetails = async (deliveryDetails) => {
         await this.firstNameInput.waitFor();
-        await this.firstNameInput.fill("John");
+        await this.firstNameInput.fill(deliveryDetails.firstName);
 
         await this.lastNameInput.waitFor();
-        await this.lastNameInput.fill("Doe");
+        await this.lastNameInput.fill(deliveryDetails.lastName);
 
         await this.addressStreetInput.waitFor();
-        await this.addressStreetInput.fill("1 Test Street");
+        await this.addressStreetInput.fill(deliveryDetails.addressStreet);
 
         await this.addressPostcodeInput.waitFor();
-        await this.addressPostcodeInput.fill("TE1 1ST");
+        await this.addressPostcodeInput.fill(deliveryDetails.addressPostcode);
 
         await this.addressCityInput.waitFor();
-        await this.addressCityInput.fill("Test City");
+        await this.addressCityInput.fill(deliveryDetails.addressCity);
 
         await this.countryDropdown.waitFor();
-        this.countryDropdown.selectOption("United States of America");
+        this.countryDropdown.selectOption(deliveryDetails.country);
         
         await this.page.pause();   
     }
