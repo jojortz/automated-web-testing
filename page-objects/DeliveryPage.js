@@ -18,6 +18,7 @@ export class DeliveryPage {
         this.savedAddressPostcode = page.locator('[data-qa="saved-address-postcode"]');
         this.savedAddressCity = page.locator('[data-qa="saved-address-city"]');
         this.savedAddressCountry = page.locator('[data-qa="saved-address-country"]');
+        this.goToPaymentButton = page.getByRole('button', { name: 'Continue to payment' });
     }
 
     fillDeliveryDetails = async (deliveryDetails) => {
@@ -59,4 +60,11 @@ export class DeliveryPage {
         await this.savedAddressCountry.first().waitFor()
         expect(await this.savedAddressCountry.first().innerText()).toBe(await this.countryDropdown.inputValue());
     }
+
+    goToPayment = async () => {
+        await this.goToPaymentButton.waitFor();
+        await this.goToPaymentButton.click();
+        await this.page.waitForURL(/\/payment/, { timeout: 3000 });
+        await this.page.pause();
+    };
 }
