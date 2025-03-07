@@ -4,7 +4,8 @@
   "description": "working through automated web testing tutorials",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test --headed"
+    "test": "playwright test --headed",
+    "test:ci": "playwright test"
   },
   "keywords": [],
   "author": "",
